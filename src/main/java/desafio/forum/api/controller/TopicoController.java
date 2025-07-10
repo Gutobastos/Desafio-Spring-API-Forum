@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("topicos")
-//@SecurityRequirement(name = "bearer-key")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired

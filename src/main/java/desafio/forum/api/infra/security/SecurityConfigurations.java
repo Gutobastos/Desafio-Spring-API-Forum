@@ -1,5 +1,6 @@
 package desafio.forum.api.infra.security;
 
+import desafio.forum.api.domain.usuario.DadosAutenticacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +34,7 @@ public class SecurityConfigurations {
                                         "/swagger-ui.html",
                                         "/swagger-ui/**",
                                         "/v3/**").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/login").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/login", "/usuarios/cadastro/usuario").permitAll()
                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

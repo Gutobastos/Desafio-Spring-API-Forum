@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -59,5 +61,11 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Usuario(DadosCadastroUsuario dados) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.login = dados.login();
+        this.senha = passwordEncoder.encode(dados.senha());
     }
 }
